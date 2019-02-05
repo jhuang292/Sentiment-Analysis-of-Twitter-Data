@@ -8,7 +8,7 @@ def preprocess_word(word):
 
     # Convert more than 2 letter repetitions to 2 letter. Example: funnnnny --> funny
     #TODO: The next line should implement the functionality in the above comment.
-    word = YOUR CODE GOES HERE
+    word = re.compile(r"(.)\1{2,}", re.DOTALL).sub(r"\1\1", word)
 
     # Remove - & '
     # TODO: The next line should implement the functionality in the above comment.
