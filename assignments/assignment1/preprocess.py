@@ -12,7 +12,7 @@ def preprocess_word(word):
 
     # Remove - & '
     # TODO: The next line should implement the functionality in the above comment.
-    word = YOUR CODE GOES HERE
+    word = re.sub("-|&|'", "", word)
     return word
 
 
