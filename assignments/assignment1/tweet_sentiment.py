@@ -13,7 +13,11 @@ def create_sent_dict(sentiment_file):
     """
     scores = {}
     
-    YOUR CODE GOES HERE
+    afinnfile = open(sentiment_file, 'r')
+    for line in affinfile:
+        term, score = line.split("\t")
+        scores[term] = int(score)
+    afinnfile.close()
     
     return scores
 
