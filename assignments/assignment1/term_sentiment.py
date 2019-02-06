@@ -12,7 +12,11 @@ def create_sent_dict(sentiment_file):
         """
     scores = {}
     
-    YOUR CODE GOES HERE
+    afinnfile = open(sentiment_file, 'r')
+    for line in afinnfile:
+        term, score = line.split("\t")
+        scores[term] = int(score)
+    afinnfile.close()
     
     return scores
 
@@ -27,8 +31,19 @@ def get_tweet_sentiment(tweet, sent_scores):
                 score (numeric): The sentiment score of the tweet
         """
     score = 0
-    
-    YOUR CODE GOES HERE
+
+    item_list = tweet.split()
+    phase_list = []
+    for i in range(len(item_list)):
+        phase = ""
+        if item_list[i] in sent_scores.keys():
+            phase += str(item_list[i]) + " "
+            i += 1
+        phase = str(phase[:-1])
+        phase_list.append(phase)
+    for item in phase_list:
+        if item in sent_scores.keys():
+            score += sent_scores[item]
     
     return score
 
@@ -43,8 +58,24 @@ def term_sentiment(sent_scores, tweets_file):
             """
     new_term_sent = {}
     
-    YOUR CODE GOES HERE
-    
+    tweets = open(tweets_file, 'r')
+    for tweet in tweets:
+        score = get_tweet_sentiment(tweet, sent_scores)
+        
+        tweet_list = tweet.split()
+        for item in tweet_list:
+            if item not in sent_scores.keys():
+                if item not in new_term_sent.keys():
+                    if score > 0:
+                        new_term_sent[item] = 1
+                    else:
+                        new_term_sent[item] = -1
+                else:
+                    if score > 0:
+                        new_term_sent[item] += 1
+                    else:
+                        new_term_sent[item] -= 1
+
     return new_term_sent
 
 
