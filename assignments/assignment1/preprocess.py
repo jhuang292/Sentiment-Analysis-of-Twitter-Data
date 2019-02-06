@@ -48,7 +48,7 @@ def preprocess_tweet(tweet):
 
     # Replaces #hashtag with hashtag. Example #DataScience should be DataScience
     # TODO: The next line should implement the functionality in the above comment.
-    tweet = YOUR CODE GOES HERE    
+    re.sub(r'#', '', tweet)    
 
     # Remove RT (retweet)
     # TODO: The next line should implement the functionality in the above comment.
