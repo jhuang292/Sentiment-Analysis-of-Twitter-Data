@@ -34,7 +34,9 @@ def get_tweet_sentiment(tweet, sent_scores):
         """
     score = 0
     
-    YOUR CODE GOES HERE
+    for item in tweet.split(" "):
+        if item in sent_scores:
+            score += sent_scores[item]
     
     return score
 
