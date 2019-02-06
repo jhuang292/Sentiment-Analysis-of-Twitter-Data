@@ -52,11 +52,11 @@ def preprocess_tweet(tweet):
 
     # Remove RT (retweet)
     # TODO: The next line should implement the functionality in the above comment.
-    tweet = re.sub(r'RT', '', tweet)
+    tweet = re.sub(r'rt', '', tweet)
     
     # Replace 2+ dots with space
     # TODO: The next line should implement the functionality in the above commen
-    tweet = YOUR CODE GOES HERE
+    tweet = re.sub(r'\.{3,}', '', tweet)
     
     # Strip space, " and ' from tweet
     tweet = tweet.strip(' "\'')
