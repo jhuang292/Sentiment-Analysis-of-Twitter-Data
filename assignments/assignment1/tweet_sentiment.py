@@ -14,11 +14,10 @@ def create_sent_dict(sentiment_file):
     scores = {}
     
     afinnfile = open(sentiment_file, 'r')
-    for line in affinfile:
+    for line in afinnfile:
         term, score = line.split("\t")
         scores[term] = int(score)
     afinnfile.close()
-    
     return scores
 
 
@@ -34,8 +33,17 @@ def get_tweet_sentiment(tweet, sent_scores):
         """
     score = 0
     
-    for item in tweet.split(" "):
-        if item in sent_scores:
+    item_list = tweet.split()
+    phase_list = []
+    for i in range(len(item_list)):
+        phase = ""
+        if item_list[i] in sent_scores.keys():
+            phase += str(item_list[i]) + " "
+            i += 1
+        phase = str(phase[:-1])
+        phase_list.append(phase)
+    for item in phase_list:
+        if item in sent_scores.keys():
             score += sent_scores[item]
     
     return score
