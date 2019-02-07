@@ -1,0 +1,7 @@
+Json data set is the semi-structured data set, the twitter json data set is the experimental data set, because it involves tags and many dirty symbols for analysis tasks, this project is to clean and process the json data.
+
+The experiment process involves reading the twitter data set and focus on the text attribute part, Python rxg package is used to clean the data and generate the cleaned data set.
+
+AFINN-111.txt involves the terms with corresponding score for the words in the data set, the tweet_sentiment.py script is used to evalute the score of each cleaned tweet.
+
+However, there are many words in the tweets which have no score, after getting the score of each tweet from te previous experiment, the term_sentiment.py script is used to deduce the score of the words not appeared in AFINN-111.txt file.
