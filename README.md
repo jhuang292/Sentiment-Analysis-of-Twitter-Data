@@ -1,1 +1,1 @@
-# cs639_spring19
+# Sentiment Analysis of Twitter Data
